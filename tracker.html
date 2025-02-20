@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Preparation Tracker</title>
+    <style>
+        /* Header with Logo and Button */
+        header {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Styling */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .header-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Home Button */
+        .home-btn {
+            background: white;
+            color: #2563eb;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #1a1a1a;
+        }
+
+
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .event-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .event-item {
+            background: white;
+            margin: 16px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .event-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .event-header:hover {
+            background-color: #f8fafc;
+        }
+
+        .event-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .event-date {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .checklist {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .checklist.active {
+            max-height: 500px;
+        }
+
+        .checklist-content {
+            padding: 20px;
+        }
+
+        .checklist h3 {
+            margin: 0 0 16px 0;
+            color: #1e293b;
+            font-size: 18px;
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .task:hover {
+            background: #f1f5f9;
+        }
+
+        .task input[type="checkbox"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .task label {
+            flex: 1;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .task.completed label {
+            text-decoration: line-through;
+            color: #22c55e;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-top: 12px;
+        }
+
+        .progress {
+            height: 100%;
+            background: #2563eb;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        footer {
+            background: #1e293b;
+            color: #f8fafc;
+            text-align: center;
+            padding: 16px;
+            margin-top: 185px;
+            font-size: 14px;
+            
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .event-header img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .event-name {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="eventvista--logo.png" alt="Logo"> <!-- Replace with actual logo -->
+            <span class="header-title">Event Preparation Tracker</span>
+        </div>
+        <button class="home-btn" onclick="goHome()">Home</button>
+    </header>
+
+
+    <div class="container">
+        <h2>Your Upcoming Events</h2>
+        <ul class="event-list">
+            <li class="event-item">
+                <div class="event-header" onclick="toggleChecklist('techfest')">
+                    <img src="tech_conference.png" alt="TechFest">
+                    <div class="event-info">
+                        <div class="event-name">TechFest 2025</div>
+                        <div class="event-date">March 15-16, 2025</div>
+                    </div>
+                </div>
+                <div id="techfest" class="checklist">
+                    <div class="checklist-content">
+                        <h3>Preparation Checklist</h3>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Book Conference
+                                Center Venue</label></div>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Send Digital
+                                Invitations to Speakers</label></div>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Arrange Technical
+                                Equipment</label></div>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="event-item">
+                <div class="event-header" onclick="toggleChecklist('cultural')">
+                    <img src="cultural.png" alt="Cultural Night">
+                    <div class="event-info">
+                        <div class="event-name">Cultural Night</div>
+                        <div class="event-date">April 5, 2025</div>
+                    </div>
+                </div>
+                <div id="cultural" class="checklist">
+                    <div class="checklist-content">
+                        <h3>Preparation Checklist</h3>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Confirm Performance
+                                Schedule</label></div>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Order Stage
+                                Decorations</label></div>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Test Sound
+                                System</label></div>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="event-item">
+                <div class="event-header" onclick="toggleChecklist('sports')">
+                    <img src="sports.png" alt="Sports Meet">
+                    <div class="event-info">
+                        <div class="event-name">Sports Meet</div>
+                        <div class="event-date">May 1-2, 2025</div>
+                    </div>
+                </div>
+                <div id="sports" class="checklist">
+                    <div class="checklist-content">
+                        <h3>Preparation Checklist</h3>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Book Sports
+                                Complex</label></div>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Order Sports
+                                Equipment</label></div>
+                        <div class="task"><input type="checkbox" onclick="toggleTask(this)"><label>Schedule
+                                Referees</label></div>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <footer>© 2025 EventVista</footer>
+
+    <script>
+        function goHome() {
+            window.location.href = "/"; // Change to your actual home page URL
+        }
+
+        function toggleChecklist(eventId) {
+            const checklist = document.getElementById(eventId);
+            checklist.classList.toggle('active');
+        }
+
+        function toggleTask(checkbox) {
+            const taskDiv = checkbox.closest('.task');
+            taskDiv.classList.toggle('completed');
+
+            // Update progress bar
+            const checklist = checkbox.closest('.checklist');
+            const tasks = checklist.querySelectorAll('.task');
+            const completedTasks = checklist.querySelectorAll('.task.completed');
+            const progress = checklist.querySelector('.progress');
+            const progressPercentage = (completedTasks.length / tasks.length) * 100;
+            progress.style.width = progressPercentage + '%';
+        }
+
+        // Initialize progress bars
+        document.querySelectorAll('.checklist').forEach(checklist => {
+            const tasks = checklist.querySelectorAll('.task');
+            const completedTasks = checklist.querySelectorAll('.task.completed');
+            const progress = checklist.querySelector('.progress');
+            const progressPercentage = (completedTasks.length / tasks.length) * 100;
+            progress.style.width = progressPercentage + '%';
+        });
+    </script>
+
+</body>
+
+</html>

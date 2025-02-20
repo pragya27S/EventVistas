@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Opportunities for Students</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        header {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(37, 99, 235, 0.9));
+            padding: 15px 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-btn {
+            text-decoration: none;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            color: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #2563EB, #1D4ED8);
+            transform: translateY(-3px);
+        }
+        .content-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .content-header h1 {
+            color: #1E293B;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background: linear-gradient(to right, #0F172A, #1E293B, #0F172A);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="dashboard.html" class="nav-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </header>
+
+    <div class="content-container">
+        <div class="content-header">
+            <h1>Internship Opportunities for Students</h1>
+            <p>Find exciting internship openings tailored for students.</p>
+        </div>
+
+        <div class="content-card" data-aos="fade-up">
+            <h2>Current Internship Openings</h2>
+            <p><i class="fas fa-building"></i> **Web Development Intern - ABC Technologies**</p>
+            <p><i class="fas fa-calendar-alt"></i> Application Deadline: March 20, 2025</p>
+            <p><i class="fas fa-external-link-alt"></i> <a href="#">Apply Now</a></p>
+
+            <p><i class="fas fa-building"></i> **Data Science Intern - XYZ Inc.**</p>
+            <p><i class="fas fa-calendar-alt"></i> Application Deadline: April 5, 2025</p>
+            <p><i class="fas fa-external-link-alt"></i> <a href="#">Apply Now</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 CCET Career Services. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>AOS.init({ duration: 800, easing: 'ease-in-out', once: true });</script>
+</body>
+</html>

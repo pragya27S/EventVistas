@@ -1,0 +1,35 @@
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+body {
+    background: linear-gradient(to right, #2C3E50, #4CA1AF);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #1A252F;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.header a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.event-card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}

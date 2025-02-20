@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Faculty Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="faculty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <style>
+    /* Header Styling */
+    .header {
+        background: #3B82F6;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .header .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .header .logo-container img {
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .header .header-title {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+
+    .header .nav-links {
+        font-size: 1rem;
+    }
+
+    .header .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: normal;
+        transition: color 0.3s;
+    }
+
+    .header .nav-links a:hover {
+        color: #FACC15;
+    }
+
+    /* Footer Styling */
+    .footer {
+        background: #1E293B;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9rem;
+        margin-top: 40px;
+    }
+
+    .footer a {
+        color: #FACC15;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .page-content {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-section {
+        padding: 40px 20px;
+    }
+
+    .faq-item {
+        background: white;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border-left: 5px solid #3B82F6;
+    }
+
+    .faq-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 12px 25px rgba(37, 99, 235, 0.2);
+    }
+
+    .faq-question {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.95);
+        transition: all 0.3s ease;
+    }
+
+    .faq-question h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #1E293B;
+        font-weight: 500;
+    }
+
+    .faq-question i {
+        color: #3B82F6;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: #F8FAFC;
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 20px;
+        max-height: 300px;
+    }
+  </style>  
+</head>
+<body>
+
+    <!-- Header with Logo and FAQ Title -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="eventvista--logo.png" alt="EventVista Logo">
+            <span class="header-title">Frequently Asked Questions</span>
+        </div>
+        <div class="nav-links">
+            <a href="faculty.html">Home</a>
+            <a href="about-us.html">About Us</a>
+            <a href="faqs.html">FAQs</a>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="faq-section">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I access the faculty portal?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can access the faculty portal by visiting the official website and clicking on "Faculty Login." Use your institutional email ID and password to log in. If you're facing any issues, contact the IT support team.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I submit attendance records?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Navigate to the "Attendance" section in the dashboard. Select your class and subject, mark attendance, and click "Submit." Make sure to submit within 24 hours of the class.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 EventVista | 
+        <a href="contact.html">Contact Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

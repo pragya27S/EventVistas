@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Portal - Access attendance, events, and more">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" as="style">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/studentstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css">
+    
+    <title>Student Portal - CCET</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div class="nav__brand">
+                <a href="#" class="nav__logo">CCET Student Portal</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#attendance" class="nav__link">Attendance</a></li>
+                    <li class="nav__item"><a href="#events" class="nav__link">Events</a></li>
+                    <li class="nav__item"><a href="#gallery" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <i class='bx bx-menu'></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!-- Home Section -->
+        <section class="home bd-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title">
+                    Welcome, <span class="home__title-color" id="student-name">Student</span>
+                </h1>
+                <div class="home__img">
+                    <img src="assets/img/student-profile.png" alt="Student profile picture" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events section" id="events">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="container">
+                <div id="loading-events" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading events...</p>
+                </div>
+                <div class="events-wrapper">
+                    <div class="evslide" id="events-container">
+                        <!-- Events will be loaded dynamically -->
+                    </div>
+                    <div class="evbutton">
+                        <button onclick="prevSlide()" aria-label="Previous event">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button onclick="nextSlide()" aria-label="Next event">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery section" id="gallery">
+            <h2 class="section-title">Campus Gallery</h2>
+            <div class="container">
+                <div class="card__container">
+                    <article class="card__article">
+                        <img src="assets/img/gallery1.jpg" alt="CCET Degree Wing building front view" class="card__img" loading="lazy">
+                        <div class="card__data">
+                            <span class="card__description">Main Campus</span>
+                            <h2 class="card__title">CCET Degree Wing</h2>
+                        </div>
+                    </article>
+
+                    <article class="card__article">
+                        <img src="assets/img/gallery2.jpg" alt="CCET Diploma Wing building front view" class="card__img" loading="lazy">
+                        <div class="card__data">
+                            <span class="card__description">Secondary Campus</span>
+                            <h2 class="card__title">CCET Diploma Wing</h2>
+                        </div>
+                    </article>
+
+                    <article class="card__article">
+                        <img src="assets/img/gallery3.jpg" alt="Modern CCET classroom interior" class="card__img" loading="lazy">
+                        <div class="card__data">
+                            <span class="card__description">Learning Spaces</span>
+                            <h2 class="card__title">Modern Classrooms</h2>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__title">CCET Student Portal</p>
+            <div class="footer__social">
+                <a href="#" class="footer__icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="footer__icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer__icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="footer__copy">&copy; 2025 CCET. All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        // Configuration object
+        const CONFIG = {
+            endpoints: {
+                fetchEvents: './php/student_fetch_events.php',
+            },
+            refreshInterval: 300000, // 5 minutes
+            maxRetries: 3
+        };
+    </script>
+    <script src="assets/js/studentmain.js"></script>
+</body>
+</html>

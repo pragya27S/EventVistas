@@ -1,0 +1,187 @@
+<!-- research-papers.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Papers - EventVista</title>
+    <link rel="stylesheet" href="faculty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .header {
+            background: #3B82F6;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo-container img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .nav-links {
+            font-size: 1rem;
+        }
+
+        .header .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: normal;
+            transition: color 0.3s;
+        }
+
+        .header .nav-links a:hover {
+            color: #FACC15;
+        }
+
+        .footer {
+            background: #1E293B;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #FACC15;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .page-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #3B82F6, #FACC15);
+            border-radius: 3px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #F8FAFC;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="eventvista--logo.png" alt="EventVista Logo">
+            <span>EventVista</span>
+        </div>
+        <div class="nav-links">
+            <a href="faculty.html">Home</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="faculty.html">Home</a> / Research Papers
+    </div>
+    
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="page-header">
+            <h1>Research Papers</h1>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Latest Publications</h3>
+                <p>Browse through our recently published research papers.</p>
+                <a href="#" class="btn">View Papers</a>
+            </div>
+            <div class="card">
+                <h3>Submit Research</h3>
+                <p>Guidelines and submission portal for new research papers.</p>
+                <a href="#" class="btn">Submit Now</a>
+            </div>
+            <div class="card">
+                <h3>Research Archives</h3>
+                <p>Access our complete database of published research.</p>
+                <a href="#" class="btn">Browse Archives</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 EventVista | 
+        <a href="contact.html">Contact Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+</body>
+</html>

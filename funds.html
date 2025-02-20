@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Funding Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-4 text-center text-primary">Event Funding Dashboard</h1>
+        <input type="text" id="search" placeholder="Search Events..." class="form-control mb-4 shadow-sm">
+        <button class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Event</button>
+        <div class="row" id="eventContainer"></div>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div class="modal fade" id="addEventModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="newEventName" class="form-control mb-2" placeholder="Event Name">
+                    <input type="number" id="newTotalBudget" class="form-control mb-2" placeholder="Total Budget">
+                    <input type="number" id="newFoodBudget" class="form-control mb-2" placeholder="Food Budget">
+                    <input type="number" id="newVenueBudget" class="form-control mb-2" placeholder="Venue Budget">
+                    <input type="number" id="newMiscBudget" class="form-control mb-2" placeholder="Miscellaneous Budget">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addEvent()">Add Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function fetchEvents() {
+            $.ajax({
+                url: "get_events.php",
+                method: "GET",
+                success: function(response) {
+                    const events = JSON.parse(response);
+                    let eventContainer = $("#eventContainer");
+                    eventContainer.html("");
+
+                    events.forEach(event => {
+                        eventContainer.append(`
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${event.name}</h5>
+                                        <p class="card-text">Total Budget: $${event.budget}</p>
+                                        <button class="btn btn-danger" onclick="deleteEvent(${event.id})">Delete</button>
+                                        <canvas id="chart-${event.id}" class="mt-2"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                        setTimeout(() => drawChart(event.id, event.food, event.venue, event.misc), 100);
+                    });
+                }
+            });
+        }
+
+        function drawChart(eventId, food, venue, misc) {
+            const ctx = document.getElementById(`chart-${eventId}`).getContext("2d");
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["Food", "Venue", "Misc"],
+                    datasets: [{
+                        data: [food, venue, misc],
+                        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                    }]
+                }
+            });
+        }
+
+        function addEvent() {
+            let name = $("#newEventName").val();
+            let budget = $("#newTotalBudget").val();
+            let food = $("#newFoodBudget").val();
+            let venue = $("#newVenueBudget").val();
+            let misc = $("#newMiscBudget").val();
+
+            $.ajax({
+                url: "save_event.php",
+                method: "POST",
+                data: { name, budget, food, venue, misc },
+                success: function() {
+                    $("#addEventModal").modal("hide");
+                    fetchEvents();
+                }
+            });
+        }
+
+        function deleteEvent(id) {
+            $.ajax({
+                url: "delete_event.php",
+                method: "POST",
+                data: { id },
+                success: function() {
+                    fetchEvents();
+                }
+            });
+        }
+
+        fetchEvents();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
